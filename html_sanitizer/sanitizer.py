@@ -259,17 +259,17 @@ class Sanitizer(object):
                         element.text,
                     )
 
-            elif element.tag == "br":
-                # Drop the next element if
-                # 1. it is a <br> too and 2. there is no content in-between
-                nx = element.getnext()
-                if (
-                    nx is not None
-                    and nx.tag == "br"
-                    and (not element.tail or only_whitespace_re.match(element.tail))
-                ):
-                    nx.drop_tag()
-                    continue
+            # elif element.tag == "br":
+            #     # Drop the next element if
+            #     # 1. it is a <br> too and 2. there is no content in-between
+            #     nx = element.getnext()
+            #     if (
+            #         nx is not None
+            #         and nx.tag == "br"
+            #         and (not element.tail or only_whitespace_re.match(element.tail))
+            #     ):
+            #         nx.drop_tag()
+            #         continue
 
             if not element.text:
                 # No text before first child and first child is a <br>: Drop it
